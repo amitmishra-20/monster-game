@@ -6,6 +6,9 @@ let myRole = '';
 let myName = '';
 let allRoles = [];
 
+const PORT = process.env.PORT || 3000;
+
+
 function showSection(id) {
   ['landing-section', 'host-create-section', 'join-section', 'game-section'].forEach(sec => {
     const el = document.getElementById(sec);
@@ -77,8 +80,7 @@ document.getElementById('join-btn').onclick = () => {
 
 function connectWS(name, roomId, asHost = false, createRoom = false) {
   const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  const port = location.port ? `:${location.port}` : '';
-  ws = new WebSocket(`${protocol}://${location.hostname}${port}`);
+  ws = new WebSocket(`${protocol}://${location.hostname}:${PORT}`);
   ws.onopen = () => {
     ws.send(JSON.stringify({ type: createRoom ? 'create_room' : 'join', roomId, name, asHost }));
   };
