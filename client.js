@@ -77,7 +77,8 @@ document.getElementById('join-btn').onclick = () => {
 
 function connectWS(name, roomId, asHost = false, createRoom = false) {
   const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  ws = new WebSocket(`${protocol}://${location.hostname}:3000`);
+  const port = location.port ? `:${location.port}` : '';
+  ws = new WebSocket(`${protocol}://${location.hostname}${port}`);
   ws.onopen = () => {
     ws.send(JSON.stringify({ type: createRoom ? 'create_room' : 'join', roomId, name, asHost }));
   };
