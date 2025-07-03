@@ -1,0 +1,251 @@
+body {
+    background: #f7f7f7;
+    color: #222;
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .card, #private-chat-section, #player-list-section {
+    background: #fff;
+    border: 4px solid #222;
+    border-radius: 18px;
+    box-shadow: 8px 8px 0 #222;
+    color: #222;
+  }
+  
+  h1, h2, h3, h4 {
+    color: #222;
+    font-weight: 900;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  button {
+    background: #4f6cff;
+    color: #fff;
+    border: 4px solid #222;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 0.7em 2em;
+    box-shadow: 4px 4px 0 #222;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+  }
+  button:hover {
+    background: #ffe14f;
+    color: #222;
+  }
+  
+  input, select {
+    border: 4px solid #222;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    padding: 0.6em 1em;
+    background: #fff;
+    color: #222;
+    font-family: inherit;
+    box-shadow: 2px 2px 0 #222;
+    outline: none;
+  }
+  input:focus, select:focus {
+    border-color: #4f6cff;
+    background: #ffe14f;
+    color: #222;
+  }
+  
+  #game-area {
+    display: flex;
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 8px 8px 0 #222;
+    border: 4px solid #222;
+    overflow: hidden;
+  }
+  
+  #side-panel {
+    width: 220px;
+    min-width: 180px;
+    border-radius: 0;
+    border-right: 4px solid #222;
+    min-height: 100%;
+    box-shadow: none;
+    padding: 2rem 1rem;
+    background: #ffe14f;
+    text-align: center;
+    color: #222;
+  }
+  #side-panel button {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+  
+  #main-panel {
+    flex: 1;
+    margin-left: 0;
+    padding: 2rem 2rem 2rem 2rem;
+    color: #222;
+  }
+  
+  #messages, #private-messages {
+    background: #fff;
+    border: 4px solid #222;
+    border-radius: 12px;
+    min-height: 120px;
+    margin-bottom: 1em;
+    font-size: 1.1rem;
+    box-shadow: 4px 4px 0 #222;
+    padding: 1em;
+    text-align: left;
+    overflow-y: auto;
+    color: #222;
+  }
+  
+  #private-chat-section, #player-list-section {
+    background: #fff;
+    border: 4px solid #222;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0 #222;
+    margin-top: 1.5em;
+    padding: 1em;
+    color: #222;
+  }
+  
+  #player-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  #player-list li {
+    background: #ffe14f;
+    border: 2px solid #222;
+    border-radius: 8px;
+    margin: 0.4em 0;
+    padding: 0.5em 1em;
+    font-weight: 700;
+    color: #222;
+    box-shadow: 2px 2px 0 #222;
+  }
+  
+  #connecting-msg {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ff3b3b;
+    background: #fff;
+    border: 3px dashed #222;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    margin-bottom: 1em;
+    box-shadow: 2px 2px 0 #222;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: #ffe14f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 8px;
+  }
+  
+  .private-chat-row, .public-chat-row {
+    display: flex;
+    gap: 0.5em;
+  }
+  button#send-private-btn{
+      width: 100%;
+  }
+  .private-chat-row select,
+  .private-chat-row input[type="text"],
+  .private-chat-row input[type="search"],
+  .private-chat-row input#private-msg-input,
+  .public-chat-row input[type="text"],
+  .public-chat-row input[type="search"],
+  .public-chat-row input#msg-input {
+    width: 50%;
+    margin-right: 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    background: #fff;
+    color: #222;
+    border: 2px solid #222;
+  }
+  .public-chat-row button {
+    width: 50%;
+    margin-right: 0;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: #4f6cff;
+    color: #fff;
+    border: 2px solid #222;
+  }
+  .public-chat-row button:hover {
+    background: #ffe14f;
+    color: #222;
+  }
+  
+  
+  @media (max-width: 900px) {
+    #game-area {
+      flex-direction: column;
+      max-width: 98vw;
+    }
+    #side-panel {
+      width: 100%;
+      min-width: unset;
+      border-right: none;
+      border-bottom: 4px solid #222;
+      border-radius: 18px 18px 0 0;
+      min-height: unset;
+      padding: 1.2rem 1rem;
+    }
+    #main-panel {
+      padding: 1.2rem 1rem;
+    }
+    .private-chat-row, .public-chat-row {
+      flex-direction: column;
+      gap: 0;
+    }
+    .private-chat-row select,
+    .private-chat-row input[type="text"],
+    .private-chat-row input[type="search"],
+    .private-chat-row input#private-msg-input,
+    .public-chat-row input[type="text"],
+    .public-chat-row input[type="search"],
+    .public-chat-row input#msg-input,
+    .private-chat-row button,
+    .public-chat-row button {
+      width: 100%;
+    }
+  }
+  
+  .card {
+    background: #fff;
+    border: 4px solid #222;
+    border-radius: 22px;
+    box-shadow: 12px 12px 0 #222;
+    color: #222;
+    padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+    margin: 3.5rem auto 2.5rem auto;
+    max-width: 440px;
+    min-width: 320px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .card input, .card button {
+    margin: 0.5rem 0 0 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .card button {
+    margin-top: 1.2rem;
+  }

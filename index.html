@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster Room Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="landing-section" class="card">
+    <h1>Monster Room Game</h1>
+    <button id="start-create-btn">Create Room</button>
+  </div>
+  <div id="host-create-section" class="card" style="display:none;">
+    <h2>Monster Room Game</h2>
+    <input id="host-name" placeholder="Your Name" />
+    <button id="final-create-btn">Join as Host</button>
+  </div>
+  <div id="join-section" class="card" style="display:none;">
+    <h2>Join Room</h2>
+    <input id="name" placeholder="Your Name" />
+    <input id="join-room-id" placeholder="Room ID" disabled />
+    <button id="join-btn">Join as Player</button>
+  </div>
+  <div id="game-section" style="display:none;">
+    <div id="game-area">
+      <div id="side-panel">
+        <button id="reset-game-btn" style="margin-top:16px;">Reset Game</button>
+        <button id="side-share-link-btn">Share Room Link</button>
+        <div id="side-share-link-msg" style="color:green; margin-top:8px;"></div>
+      </div>
+      <div id="main-panel">
+        <h2>Room: <span id="room-name"></span></h2>
+        <h3>Your Info: <span id="host-badge" style="color:gold;"></span></h3>
+        <div id="connecting-msg" style="color:gray; display:none;">Connecting...</div>
+        <div id="messages" class="messages" style="height:200px; background:#f5f6f8; margin-bottom:10px; border-radius:8px; padding:10px; overflow-y:auto;"></div>
+        <div class="public-chat-row">
+        <input id="msg-input" placeholder="Type a message..." />
+        <button id="send-btn">Send</button>
+        </div>
+        <div id="private-chat-section" style="display:none; margin-top:20px;">
+          <h4>Private Chat</h4>
+          <label for="private-player-select" id="private-chat-label" style="font-weight:700;">Send to:</label>
+          <div class="private-chat-row">
+            <select id="private-player-select" style="display:none; margin-bottom:10px;">
+              <option value="" disabled selected>Select a player...</option>
+            </select>
+            <input id="private-msg-input" placeholder="Type private message..." style="margin-bottom:10px;" />
+          </div>
+          <button id="send-private-btn">Send Private</button>
+          <div id="private-messages" style="margin-top:10px; min-height:40px;"></div>
+        </div>
+        <div id="player-list-section" style="margin-top:20px; display:none;">
+          <h4>Players in Room</h4>
+          <ul id="player-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="client.js"></script>
+</body>
+</html>
