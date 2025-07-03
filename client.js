@@ -84,7 +84,7 @@ function connectWS(name, roomId, asHost = false, createRoom = false) {
     // Railway deployment - replace with your actual Railway backend URL
     const backendUrl = 'monster-game-jade.vercel.app'; // UPDATE THIS URL
     const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-    wsUrl = `${protocol}://${backendUrl}`;
+    wsUrl = `${protocol}://${backendUrl}:8080`;
   
   console.log('Connecting to WebSocket:', wsUrl);
   ws = new WebSocket(wsUrl);
