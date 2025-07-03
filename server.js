@@ -4,11 +4,17 @@ const http = require('http');
 const express = require('express');
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ 
+  server,
+  // Allow connections from any origin for Railway deployment
+  verifyClient: (info) => {
+    return true; // Allow all connections
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+app.use(express.static('.'));
 
 const ROLES = ['Monster', 'Warrior', 'Healer'];
 const rooms = {};
@@ -47,7 +53,8 @@ function sendRolesToAll(room) {
   }
 }
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws, req) => {
+  console.log('New WebSocket connection from:', req.socket.remoteAddress);
   ws.isHost = false;
   ws.role = null;
   ws.on('message', (msg) => {

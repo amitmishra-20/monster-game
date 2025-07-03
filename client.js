@@ -6,8 +6,6 @@ let myRole = '';
 let myName = '';
 let allRoles = [];
 
-const PORT = process.env.PORT || 3000;
-
 
 function showSection(id) {
   ['landing-section', 'host-create-section', 'join-section', 'game-section'].forEach(sec => {
@@ -79,9 +77,25 @@ document.getElementById('join-btn').onclick = () => {
 };
 
 function connectWS(name, roomId, asHost = false, createRoom = false) {
-  const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  ws = new WebSocket(`${protocol}://${location.hostname}:${PORT}`);
+  // Configuration for different environments
+  let wsUrl;
+  
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    // Local development
+    const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+    const port = location.port ? `:${location.port}` : '';
+    wsUrl = `${protocol}://${location.hostname}${port}`;
+  } else {
+    // Railway deployment - replace with your actual Railway backend URL
+    const backendUrl = 'monster-game.up.railway.app'; // UPDATE THIS URL
+    const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+    wsUrl = `${protocol}://${backendUrl}`;
+  }
+  
+  console.log('Connecting to WebSocket:', wsUrl);
+  ws = new WebSocket(wsUrl);
   ws.onopen = () => {
+    console.log('WebSocket connected successfully');
     ws.send(JSON.stringify({ type: createRoom ? 'create_room' : 'join', roomId, name, asHost }));
   };
   ws.onmessage = (event) => {
@@ -195,7 +209,11 @@ function connectWS(name, roomId, asHost = false, createRoom = false) {
     }
   };
   ws.onclose = () => {
+    console.log('WebSocket connection closed');
     alert('Connection lost. Please refresh and rejoin.');
+  };
+  ws.onerror = (error) => {
+    console.error('WebSocket error:', error);
   };
 }
 
