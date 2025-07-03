@@ -80,17 +80,11 @@ function connectWS(name, roomId, asHost = false, createRoom = false) {
   // Configuration for different environments
   let wsUrl;
   
-  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-    // Local development
-    const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-    const port = location.port ? `:${location.port}` : '';
-    wsUrl = `${protocol}://${location.hostname}${port}`;
-  } else {
+  
     // Railway deployment - replace with your actual Railway backend URL
-    const backendUrl = 'monster-game.up.railway.app'; // UPDATE THIS URL
+    const backendUrl = 'monster-game-jade.vercel.app'; // UPDATE THIS URL
     const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
     wsUrl = `${protocol}://${backendUrl}`;
-  }
   
   console.log('Connecting to WebSocket:', wsUrl);
   ws = new WebSocket(wsUrl);
