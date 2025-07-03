@@ -81,10 +81,10 @@ function connectWS(name, roomId, asHost = false, createRoom = false) {
   let wsUrl;
   
   
-    // Railway deployment - replace with your actual Railway backend URL
-    const backendUrl = location.hostname; // UPDATE THIS URL
-    const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-    wsUrl = `${protocol}://${backendUrl}:8080`;
+      // Railway deployment - use the same hostname without port
+  const backendUrl = location.hostname;
+  const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+  wsUrl = `${protocol}://${backendUrl}`;
   
   console.log('Connecting to WebSocket:', wsUrl);
   ws = new WebSocket(wsUrl);
